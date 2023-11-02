@@ -90,3 +90,19 @@ p {
     padding: 40px;
     justify-content: center;
 }
+@media screen and (max-width: 640px) {
+    .d-flex-second {
+        padding: 10px;
+        gap: 62px;
+}
+    .left-clients {
+    padding: 30px;
+}
+}
+@media screen and (max-width: 570px) {
+    .box-left::after,
+    .box-right::after
+     {
+        left: 80px;
+    }
+}
