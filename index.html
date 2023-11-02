@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App</title>
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="hsl(0 0% 100%)" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="hsl(0 0% 100%)" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="preload" href="src/fonts/IBM-Plex-Sans/IBMPlexSans.woff" as="font" type="font/woff" crossorigin="" />
+    <link
+      rel="preload"
+      href="src/fonts/IBM-Plex-Sans/IBMPlexSans-Medium.woff"
+      as="font"
+      type="font/woff"
+      crossorigin=""
+    />
+    <link
+      rel="preload"
+      href="src/fonts/IBM-Plex-Sans/IBMPlexSans-SemiBold.woff"
+      as="font"
+      type="font/woff"
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="src/css/light.css" media="(prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="src/css/dark.css" media="(prefers-color-scheme: dark)" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="flex">
+          <a href="#" class="header-logo">
+            <div class="logo"></div>
+          </a>
+
+          <nav class="header-nav">
+            <a class="header-nav__link active" href="#">Home</a>
+            <a class="header-nav__link" href="tasks.html">Tasks</a>
+            <a class="header-nav__link" href="#">Experiences</a>
+            <a class="header-nav__link" href="#">Airbnb you home</a>
+          </nav>
+
+          <div class="header-buttons">
+            <button data-variant="secondary">Button</button>
+            <button id="signup" data-variant="primary">Sign up</button>
+          </div>
+
+          <fieldset class="switcher">
+            <input type="checkbox" class="switch" />
+            <label for="s2"></label>
+          </fieldset>
+
+          <div tabindex="0" class="btn-icon burger-menu ml-4" data-variant="ghost">
+            <div data-icon="icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2 3H14V4H2V3ZM2 12H14V13H2V12ZM14 6H2V7H14V6ZM2 9H14V10H2V9Z"
+                  fill="black"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- модалка навигации  -->
+    <dialog class="modal" id="modal-nav">
+      <div class="modal-wrapper">
+        <header>
+          <h2 class="modal-title">Navigation</h2>
+          <div id="close-modal" tabindex="0" class="btn-icon" data-variant="ghost">
+            <div data-icon="icon">
+              <svg width="12" height="12" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8 0.7L7.3 0L4 3.3L0.7 0L0 0.7L3.3 4L0 7.3L0.7 8L4 4.7L7.3 8L8 7.3L4.7 4L8 0.7Z"
+                  fill="#161616"
+                />
+              </svg>
+            </div>
+          </div>
+        </header>
+        <section>
+          <nav class="modal-nav">
+            <a class="modal-nav__link active" href="#"> Home </a>
+            <a class="modal-nav__link" href="tasks.html"> Tasks </a>
+            <a class="modal-nav__link" href="#"> Experiences </a>
+            <a class="modal-nav__link" href="#"> Airbnb you home </a>
+          </nav>
+        </section>
+      </div>
+    </dialog>
+
+    <!-- модалка формы  -->
+    <dialog class="modal" id="modal">
+      <div class="modal-wrapper">
+        <header>
+          <h2 class="modal-title">Contact us</h2>
+          <div id="close-modal" tabindex="0" class="btn-icon" data-variant="ghost">
+            <div data-icon="icon">
+              <svg width="12" height="12" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8 0.7L7.3 0L4 3.3L0.7 0L0 0.7L3.3 4L0 7.3L0.7 8L4 4.7L7.3 8L8 7.3L4.7 4L8 0.7Z"
+                  fill="#161616"
+                />
+              </svg>
+            </div>
+          </div>
+        </header>
+        <form action="#" id="registration-form">
+          <section>
+            <div class="input-container">
+              <label for="username">Your name</label>
+              <input
+                id="register-username"
+                name="username"
+                type="text"
+                placeholder="Name"
+                autocomplete="off"
+                required
+              />
+              <span class="input-error" id="username-error"></span>
+            </div>
+
+            <div class="input-container">
+              <label for="register-password">Your password</label>
+              <input
+                type="password"
+                id="register-password"
+                placeholder="Password"
+                autocomplete="off"
+                name="password"
+                required
+              />
+              <span class="input-error" id="password-error"></span>
+            </div>
+
+            <div class="input-container">
+              <label for="register-email">Input email</label>
+              <input type="email" id="register-email" placeholder="Email" autocomplete="off" name="email" required />
+              <span class="input-error" id="email-error"></span>
+            </div>
+
+            <div class="input-container">
+              <label for="register-phone">Input phone</label>
+              <input type="tel" placeholder="Phone" id="register-phone" name="phone" autocomplete="off" required />
+              <span class="input-error" id="phone-error"></span>
+            </div>
+
+            <div>
+              <label for="register-phone">Your message</label>
+              <textarea
+                cols="3"
+                rows="3"
+                placeholder="Enter your message"
+                id="register-message"
+                autocomplete="off"
+                required
+              ></textarea>
+            </div>
+
+            <!-- <div>
+                                    <label for="number"> Input Number </label>
+                                    <input
+                                        id="number"
+                                        type="number"
+                                        value="1"
+                                        placeholder="count"
+                                        autocomplete="off"
+                                    />
+                                </div> -->
+          </section>
+          <footer>
+            <button type="button" data-variant="primary">Submit</button>
+          </footer>
+        </form>
+      </div>
+    </dialog>
+
+    <main>
+      <section id="banner">
+        <div class="container">
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="banner-description">
+                  <h2 class="banner-title">The stories behind the products 1</h2>
+                  <p class="banner-subtitle">Democratic design dispatches straight from the heart of Älmhult</p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="banner-description">
+                  <h2 class="banner-title">The stories behind the products 2</h2>
+
+                  <p class="banner-subtitle">Democratic design dispatches straight from the heart of Älmhult</p>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="banner-description">
+                  <h2 class="banner-title">The stories behind the products 3</h2>
+
+                  <p class="banner-subtitle">Democratic design dispatches straight from the heart of Älmhult</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h3>Buttons</h3>
+        <!------------------------------------------------>
+        <!--               Button Primary               -->
+        <!------------------------------------------------>
+        <div class="block">
+          <!-- Button "Primary" without icon -->
+          <button data-variant="primary">Primary</button>
+
+          <!-- Button "Primary" without icon disabled -->
+          <button id="button" data-variant="primary" disabled>Primary</button>
+
+          <!-- Button "Primary" with icon -->
+          <div tabindex="0" class="btn-icon" data-variant="primary">
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Primary" with icon disabled -->
+          <div class="btn-icon" data-variant="primary" disabled>
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Primary" icon -->
+          <button data-variant="primary">
+            Primary
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Button "Primary" icon  disabled-->
+          <button data-variant="primary" disabled>
+            Primary
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <!------------------------------------------------>
+        <!--            Button Danger-Primary           -->
+        <!------------------------------------------------>
+        <div class="block">
+          <!-- Button "Danger Primary" without icon -->
+          <button data-variant="danger-primary">Danger Primary</button>
+
+          <!-- Button "Danger-Primary" without icon disabled -->
+          <button data-variant="danger-primary" disabled>Danger Primary</button>
+
+          <!-- Button "Danger-Primary" with icon -->
+          <div tabindex="0" class="btn-icon" data-variant="danger-primary">
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Danger-Primary" with icon disabled -->
+          <div class="btn-icon" data-variant="danger-primary" disabled>
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Danger-Primary" icon -->
+          <button data-variant="danger-primary">
+            Danger
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Button "Danger-Primary" icon  disabled-->
+          <button data-variant="danger-primary" disabled>
+            Danger
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <!------------------------------------------------>
+        <!--               Button Secondary             -->
+        <!------------------------------------------------>
+        <div class="block">
+          <!-- Button "Secondary" without icon -->
+          <button data-variant="secondary">Secondary</button>
+
+          <!-- Button "Secondary" without icon disabled -->
+          <button data-variant="secondary" disabled>Secondary</button>
+
+          <!-- Button "Secondary" with icon -->
+          <div tabindex="0" class="btn-icon" data-variant="secondary">
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Secondary" with icon disabled -->
+          <div class="btn-icon" data-variant="secondary" disabled>
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Secondary" with icon -->
+          <button data-variant="secondary">
+            Secondary
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Button "Secondary" with icon disabled -->
+          <button data-variant="secondary" disabled>
+            Secondary
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <!------------------------------------------------>
+        <!--               Button Tertiary              -->
+        <!------------------------------------------------>
+        <div class="block">
+          <!-- Button "Tertiary" without icon -->
+          <button data-variant="tertiary">Tertiary</button>
+
+          <!-- Button "Tertiary" without icon disabled -->
+          <button data-variant="tertiary" disabled>Tertiary</button>
+
+          <!-- Button "Tertiary" with icon -->
+          <div tabindex="0" class="btn-icon" data-variant="tertiary">
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Tertiary" with icon disabled -->
+          <div class="btn-icon" data-variant="tertiary" disabled>
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Tertiary" icon -->
+          <button data-variant="tertiary">
+            Tertiary
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Button "Tertiary" icon disabled -->
+          <button data-variant="tertiary" disabled>
+            Tertiary
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <!------------------------------------------------>
+        <!--           Button Danger-Tertiary           -->
+        <!------------------------------------------------>
+        <div class="block">
+          <!-- Button "Danger-Tertiary" without icon -->
+          <button data-variant="danger-tertiary">Danger</button>
+
+          <!-- Button "Danger-Tertiary" without icon disabled -->
+          <button data-variant="danger-tertiary" disabled>Danger</button>
+
+          <!-- Button "Danger-Tertiary" with icon -->
+          <div tabindex="0" class="btn-icon" data-variant="danger-tertiary">
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Danger-Tertiary" with icon disabled -->
+          <div class="btn-icon" data-variant="danger-tertiary" disabled>
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Danger-Tertiary" icon -->
+          <button data-variant="danger-tertiary">
+            Danger
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Button "Danger-Tertiary" icon disabled-->
+          <button data-variant="danger-tertiary" disabled>
+            Danger
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <!------------------------------------------------>
+        <!--                Button Ghost                -->
+        <!------------------------------------------------>
+        <div class="block">
+          <!-- Button "Ghost" without icon -->
+          <button data-variant="ghost">Ghost</button>
+
+          <!-- Button "Ghost" without icon disabled -->
+          <button data-variant="ghost" disabled>Ghost</button>
+
+          <!-- Button "Ghost" with icon -->
+          <div tabindex="0" class="btn-icon" data-variant="ghost">
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Ghost" with icon disabled -->
+          <div class="btn-icon" data-variant="ghost" disabled>
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Ghost" icon -->
+          <button data-variant="ghost">
+            Ghost
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Button "Ghost" icon disabled -->
+          <button data-variant="ghost" disabled>
+            Ghost
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        <!------------------------------------------------>
+        <!--            Button Danger-Ghost             -->
+        <!------------------------------------------------>
+        <div class="block">
+          <!-- Button "Danger-Ghost" without icon -->
+          <button data-variant="danger-ghost">Danger Ghost</button>
+
+          <!-- Button "Danger-Ghost" without icon disabled -->
+          <button data-variant="danger-ghost" disabled>Danger Ghost</button>
+
+          <!-- Button "Danger-Ghost" with icon -->
+          <div tabindex="0" class="btn-icon" data-variant="danger-ghost">
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Danger-Ghost" with icon disabled -->
+          <div class="btn-icon" data-variant="danger-ghost" disabled>
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Button "Danger-Ghost" icon -->
+          <button data-variant="danger-ghost">
+            Danger
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Button "Danger-Ghost" icon -->
+          <button data-variant="danger-ghost" disabled>
+            Danger
+            <div data-icon="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.5 7.5V3.5H7.5V7.5H3.5V8.5H7.5V12.5H8.5V8.5H12.5V7.5H8.5Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="src/js/theme-switcher.js"></script>
+    <script type="module" src="src/js/script.js"></script>
+  </body>
+</html>
