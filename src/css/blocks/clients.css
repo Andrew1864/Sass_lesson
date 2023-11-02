@@ -17,6 +17,13 @@ h1 {
     padding-bottom: 32px;
     font-size: 48px
 }
+.icon-header {
+    width: 176px;
+    height: 117px;
+    position: absolute;
+    top: 125px;
+    right: 155px;
+}
 h4 {
     padding-bottom: 8px;
     font-size: 18px;
