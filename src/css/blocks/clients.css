@@ -41,15 +41,33 @@ p {
     width: 540px;
     /* height: 304px; */
     padding: 30px;
+    position: relative;
     border-radius: 10px;
     background: white;
+}
+.box-left::after {
+    content: ''; 
+    position: absolute; /* Абсолютное позиционирование */
+    left: 250px;
+     bottom: -20px; /* Положение треугольника */
+    border: 11px solid transparent; /* Прозрачные границы */
+    border-top: 10px solid white; /* Добавляем треугольник */
 }
 .box-right {
     width: 540px;
     /* height: 304px; */
     padding: 30px;
+    position: relative;
     border-radius: 10px;
     background: white;
+}
+.box-right::after {
+    content: ''; 
+    position: absolute; /* Абсолютное позиционирование */
+    left: 250px;
+     bottom: -20px; /* Положение треугольника */
+    border: 11px solid transparent; /* Прозрачные границы */
+    border-top: 10px solid white; /* Добавляем треугольник */
 }
 .d-flex-second {
     padding-top: 30px;
