@@ -17,6 +17,10 @@ h1 {
     padding-bottom: 32px;
     font-size: 48px
 }
+h4 {
+    padding-bottom: 8px;
+    text-align: center;
+}
 p {
     line-height: 24px;
     font-size: 14px;
@@ -26,6 +30,13 @@ p {
     gap: 30px;
 }
 .box-left {
+    width: 540px;
+    /* height: 304px; */
+    padding: 30px;
+    border-radius: 10px;
+    background: #C4C4C4;
+}
+.box-right {
     width: 540px;
     /* height: 304px; */
     padding: 30px;
